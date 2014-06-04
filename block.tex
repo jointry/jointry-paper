@@ -1,0 +1,26 @@
+\subsection{ブロックとスクリプト}
+\label{sec:block}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[scale=0.4]{images/block.eps}
+\caption{ブロックの構造}
+\ecaption{Block structure.}
+\label{fig:block}
+\end{figure}
+
+「ブロック」の部分については，JavaFXの標準ライブラリである\tt{Pane}クラ
+スや\tt{Rectangle}クラスを利用した独自の\tt{Block}クラスを作成した
+（\figref{fig:block}）．これがすべてのブロックの親クラスとなる．
+
+ブロックを移動して他のブロックと重なったときは，ブロック同士を接続する
+必要がある．それぞれのブロックには，他のブロックと接続するための
+\tt{Connector}クラスを配置している．この\tt{Connector}同士が衝突検知を
+行い，構文的に接続可能であれば，ブロックの接続を許可する．
+
+それぞれのブロックは，Jointry独自のプログラム言語の構成要素を持っている．
+たとえば，10歩移動するブロックであれば，「\tt{move 10;}」を持っている．
+これは文字列として保持されており，ブロックを接続すると，関連するブロッ
+クの文字列が結合される．結合された文字列は，Jointryのプログラムとして
+［コード］タブで確認できる．これが第\ref{sec:prep}節で述べた「ブロック
+  から文字列のコードを出力できる機能」である．

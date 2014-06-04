@@ -1,0 +1,28 @@
+\subsection{共同プログラミング}
+
+複数人がそれぞれの画面を使い，お互いに協力して共通のプログラムを作成す
+ることを本稿では「共同プログラミング」と呼ぶ．
+
+Jointryでは，秋口の開発した\tt{NSBroker}（Network Service Broker）
+\cite{秋口忠三}を使用して，この共同プログラミングを実現した．
+\tt{NSBroker}は，インターネット通信におけるグループ活動を支援する通信基
+盤ライブラリであり，HTTPをベースにした独自のプロトコルを使用して，双方
+向通信を実現するものである．
+
+\begin{figure}[tb]
+\centering
+\includegraphics[scale=0.37]{images/broker.eps}
+\caption{NSBrokerによる双方向通信\cite{秋口忠三}}
+\ecaption{NSBroker enables bidirectional communications \cite{秋口忠三}.}
+\label{fig:broker}
+\end{figure}
+
+Jointryでは，「代表者」がプログラミングの「ルーム」を作り，そこに「協力
+  者」が接続するという概念モデルを採用している．それぞれが
+\figref{fig:broker}の「Server」，「ServerProxy」，「Client」に該当する．
+ユーザーがGUIを操作したタイミングで通信を開始し，同一の「ルーム」に所属
+するユーザー（「代表者」，「協力者」）すべての画面に同じ操作を反映する．
+
+通信データについては，JSON（JavaScript Object Notation）を採用した．画
+像などのバイナリデータもBase64でテキストデータにエンコードして，JSONの
+値として送信している．

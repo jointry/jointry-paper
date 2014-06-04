@@ -1,0 +1,76 @@
+%%-*- coding: euc-jp -*-
+%% 研究報告用スイッチ
+%% [techrep]
+%%
+%% 欧文表記無しのスイッチ(etitle,jkeyword,eabstract,ekeywordは任意)
+%% [noauthor]
+%%
+
+%\documentclass[submit,techreq]{ipsj}
+\documentclass[submit,techreq,noauthor]{ipsj}
+
+
+\usepackage[dvips]{graphicx}
+\usepackage{latexsym}
+\usepackage{url}
+
+% 長いURLを強制改行する
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+\def\Underline{\setbox0\hbox\bgroup\let\\\endUnderline}
+\def\endUnderline{\vphantom{y}\egroup\smash{\underline{\box0}}\\}
+\def\|{\verb|}
+
+\setcounter{巻数}{55}%vol53=2012
+\setcounter{号数}{10}
+\setcounter{page}{1}
+
+\begin{document}
+
+
+\title{共同プログラミングを実現する \\
+  初心者向けビジュアルプログラミングツール \\
+  Jointryの開発と評価}
+\etitle{Development and Evaluation of Jointry, \\
+  a Cooperative Visual Programming Tool for Novices
+}
+
+\affiliate{AIIT}{産業技術大学院大学\\
+Advanced Institute of Industrial Technology}
+\affiliate{WAICREW}{ワイクル株式会社\\
+Waicrew Inc.}
+
+\author{角 征典}{Masanori Kado}{AIIT,WAICREW}
+\author{金本 真左也}{Masaya Kanemoto}{AIIT}
+\author{Antoine Bossard}{Antoine Bossard}{AIIT}
+\author{秋口 忠三}{Chuzo Akiguchi}{AIIT}
+
+\input{abstract}
+
+\maketitle
+
+% 1. 課題設定
+\input{intro}
+% 2. 開発方針
+\input{prep}
+% 3. Jointryの開発（解決方法）
+\input{spec}
+\input{architecture}
+\input{block}
+\input{language}
+\input{collaboration}
+% 4. 評価（手順・結果・考察）
+\input{exp}
+% 5. おわりに
+\input{end}
+% 謝辞
+\input{ack}
+% 参考文献
+\bibliographystyle{ipsjunsrt}
+\bibliography{jointry}
+% 付録
+\input{appendix}
+
+\end{document}

@@ -1,0 +1,55 @@
+digraph concept {
+compound = true;
+rankdir = "BT";
+node[fontname="Hiragino Kaku Gothic Pro",charset="UTF-8"];
+edge[fontname="Hiragino Kaku Gothic Pro",charset="UTF-8"];
+labeljust="right";
+
+subgraph clusterSingle{
+label="ひとりの不安（課題）";
+labeljust="left";
+style = dashed;
+"停止する思考" -> "身近なアドバイス"[label = "を求める"];
+"わかるけどわからない" -> "停止する思考";
+"身近なアドバイス";
+}
+
+subgraph cluster2{
+label = "わかる楽しさ";
+"わからないけどわかる不思議" -> "あ、ここ◯◯で出たところだ"[style=invis];
+}
+
+subgraph cluster4{
+margin=40;
+label = "ポジティブな雰囲気";
+"楽しさ駆動" -> "自発的な行動"[label = "を生み出す"];
+}
+
+subgraph cluster1{
+label = "安心感";
+"とりあえず停止";
+"沈黙の合図";
+}
+
+subgraph cluster12{
+margin=25;
+label = "一体感";
+"共同プログラミング" -> "伝えるチカラ"[label = "を生み出す"];
+"共同プログラミング" -> "コールアンドレスポンス"[label = "を生み出す"];
+}
+
+subgraph cluster3{
+label = "成長";
+"自分ならこうする";
+}
+
+"プログラムの見える化" -> "わからないけどわかる不思議"[lhead=cluster2];
+"プログラムの見える化" -> "わかるけどわからない";
+"あ、ここ◯◯で出たところだ"->"楽しさ駆動"[ltail=cluster2,label="を生み出す"];
+"自発的な行動"->"自分ならこうする"[lhead=cluster3,label="を生み出す"];
+"とりあえず停止"->"自分ならこうする"[ltail=cluster1, lhead=cluster3,label="を生み出す"];
+"伝えるチカラ" -> "沈黙の合図"[ltail=cluster12, lhead=cluster1, label="を生み出す"];
+"楽しさ駆動"->"コールアンドレスポンス"[lhead=cluster12,label="を強化する"]
+"身近なアドバイス" -> "共同プログラミング"[label = "実現される"];
+"共同プログラミング" ->"楽しさ駆動"[label = "を強化する"];
+}
